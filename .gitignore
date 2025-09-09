@@ -1,2 +1,65 @@
- **/__pycache__
- *.swp
+# === Python 编译缓存 ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === 虚拟环境 ===
+venv/
+.venv/
+env/
+ENV/
+
+# === Django 本地数据库 ===
+*.sqlite3
+*.sqlite3-journal
+
+# === Django migrations（可选：如果你不想忽略）===
+# **不要忽略实际需要的迁移文件，只忽略临时的 __pycache__**
+# game/migrations/__pycache__/
+
+# === 环境变量和密钥文件 ===
+.env
+.env.*
+
+# === 编辑器相关 ===
+.vscode/
+.idea/
+
+# === 操作系统生成的文件 ===
+.DS_Store        # macOS
+Thumbs.db        # Windows
+Desktop.ini      # Windows
+
+# === 日志 / 覆盖率 / 临时输出 ===
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.cover
+coverage.*
+htmlcov/
+*.mo
+
+# === Vim / NeoVim 临时文件 ===
+*.swp
+*.swo
+*.swn
+
+# === 其他构建相关 ===
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
