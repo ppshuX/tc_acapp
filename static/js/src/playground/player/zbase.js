@@ -151,7 +151,7 @@ class Player extends AcGameObject {
     update_move() {
         this.spent_time += this.timedelta / 1000;
 
-        if (!this.character === "robot" && this.spent_time > 4 && Math.random() < 1 / 300.0) {
+        if (this.character === "robot" && this.spent_time > 4 && Math.random() < 1 / 300.0) {
             let player = this.playground.players[Math.floor(Math.random() * this.playground.players.length)];
             let tx = player.x + player.speed * this.vx * this.timedelta / 1000 * 0.3;
             let ty = player.y + player.speed * this.vy * this.timedelta / 1000 * 0.3;
@@ -168,7 +168,7 @@ class Player extends AcGameObject {
             if (this.move_length < this.eps) {
                 this.move_length = 0;
                 this.vx = this.vy = 0;
-                if (!this.character === "robot") {
+                if (this.character === "robot") {
                     let tx = Math.random() * this.playground.width / this.playground.scale;
                     let ty = Math.random() * this.playground.height / this.playground.scale;
                     this.move_to(tx, ty);
