@@ -182,7 +182,6 @@ class Settings {
                 password: password,
             },
             success: function(resp) {
-                console.log(resp);
                 if (resp.result === "success") {
                     location.reload()
                 } else {
@@ -218,17 +217,20 @@ class Settings {
     }
 
     logout_on_remote() {
-        if (this.platform === "ACAPP") return false;
+        if (this.platform === "ACAPP") {
+            this.root.AcWingOS.api.window.close();
+        } else {
 
-        $.ajax({
-            url: "https://app7581.acapp.acwing.com.cn/settings/logout",
-            type: "GET",
-            success: function(resp ){
-                if (resp.result === "success") {
-                    location.reload();
+            $.ajax({
+                url: "https://app7581.acapp.acwing.com.cn/settings/logout",
+                type: "GET",
+                success: function(resp ){
+                    if (resp.result === "success") {
+                        location.reload();
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     register() {
@@ -278,7 +280,6 @@ class Settings {
                 platform:outer.platform,
             },
             success(resp) {
-                console.log(resp);
                 if (resp.result === "success") {
                     outer.username = resp.username;
                     outer.photo = resp.photo;
