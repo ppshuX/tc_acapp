@@ -32,8 +32,6 @@ class FireBall extends AcGameObject {
             this.update_attack();
         }
 
-        this.update_attack();
-
         this.render();
     }
 
