@@ -10,9 +10,9 @@
 <body style="margin: 0">
     <div id="ac_game_div"></div>
     <script type="module">
-        import {AcGame} from "{% static 'js/dist/game.js' %}"
+        import { AcGame } from "{% static 'js/dist/game.js' %}"
         $(document).ready(function(){
-            let ac_game = new AcGame("ac_game_div");
+            let ac_game = new AcGame("ac_game_div", null, "{{ access }}", "{{ refresh }}");
         });
     </script>
 </body>
