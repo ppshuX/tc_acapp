@@ -73,53 +73,53 @@ Redis 6.0+
 Node.js (用于JavaScript压缩)
 ```
 
-### 快速开始
+## 快速开始
 ```
-# 1. 克隆项目
+### 1. 克隆项目
 git clone <repository-url>
 cd tc_acapp-master
 ```
 
-# 2. 安装Python依赖
+### 2. 安装Python依赖
 ```
 pip install django==4.2.24
 pip install channels channels-redis
 pip install django-redis thrift
 ```
 
-# 3. 启动Redis
+### 3. 启动Redis
 ```
 redis-server
 ```
-# 4. 数据库迁移
+### 4. 数据库迁移
 ```
 python manage.py migrate
 ```
 
-# 5. 编译前端资源
+### 5. 编译前端资源
 ```
 bash scripts/compress_game_js.sh
 ```
 
-# 6. 启动匹配系统
+### 6. 启动匹配系统
 ```
 cd match_system/src
 python main.py &
 ```
 
-# 7. 启动Django服务器
+### 7. 启动Django服务器
 ```
 python manage.py runserver
 ```
 
-### 生产环境部署
+## 生产环境部署
 
-# 使用uWSGI部署
+### 使用uWSGI部署
 ```
 uwsgi --ini scripts/uwsgi.ini
 ```
 
-# 收集静态文件
+### 收集静态文件
 ```
 python manage.py collectstatic
 ```
