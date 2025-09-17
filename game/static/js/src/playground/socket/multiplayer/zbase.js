@@ -27,7 +27,7 @@ class MultiPlayerSocket {
             } else if (event === "shoot_fireball") {
                 outer.receive_shoot_fireball(uuid, data.tx, data.ty, data.ball_uuid);
             } else if (event === "attack") {
-                outer.receive_attack(uuid, data.attackee_uuid, data.x, data.y, data.angle, data.damage, data.uuid);
+                outer.receive_attack(uuid, data.attackee_uuid, data.x, data.y, data.angle, data.damage, data.ball_uuid);
             } else if (event === "blink" ) {
                 outer.receive_blink(uuid, data.tx, data.ty)
             } else if (event === "message") {

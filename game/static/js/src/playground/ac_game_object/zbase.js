@@ -26,6 +26,10 @@ class AcGameObject{
 
     }
 
+    late_update() {  // 在每一帧的最后执行一次
+
+    }
+
     on_destroy(){
 
     }
@@ -54,6 +58,11 @@ let AC_GAME_ANIMATION = function(timestamp) {
             obj.timedelta = timestamp - last_timestamp;
             obj.update();
         }
+    }
+
+    for (let i in AC_GAME_OBJECTS) {
+        let obj = AC_GAME_OBJECTS[i];
+        obj.late_update();
     }
 
     last_timestamp = timestamp;
