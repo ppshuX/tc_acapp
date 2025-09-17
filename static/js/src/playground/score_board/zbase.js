@@ -5,7 +5,7 @@ class ScoreBoard extends AcGameObject {
         this.playground = playground;
         this.ctx = this.playground.game_map.ctx;
 
-        this.state = "lose";
+        this.state = null;
 
         this.win_img = new Image();
         this.win_img.src = "https://cdn.acwing.com/media/article/image/2021/12/17/1_8f58341a5e-win.png";
@@ -22,7 +22,7 @@ class ScoreBoard extends AcGameObject {
         let outer = this;
         let $canvas = this.playground.game_map.$canvas;
 
-        $canvas.on('click', function() {
+        $canvas.on('click', function () {
             outer.playground.hide();
             outer.playground.root.menu.show();
         });

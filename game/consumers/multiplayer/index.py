@@ -91,7 +91,7 @@ class MultiPlayer(AsyncWebsocketConsumer):
 
         for player in players:
             if player['uuid'] == data['attackee_uuid']:
-                player['hp'] -= 26
+                player['hp'] -= 25
 
         remain_cnt = 0
         for player in players:
