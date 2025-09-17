@@ -53,136 +53,149 @@ TC-ACApp是一个基于Django + WebSocket的多人实时对战游戏，专为腾
 - **状态同步**: 玩家位置、技能、伤害的实时同步
 
 #### 4. 游戏玩法
-```javascript
+```
 // 技能系统
 - 火球术(Q键): 远程攻击，3秒冷却
-               - 闪烁(F键): 瞬移技能，5秒冷却
+- 闪烁(F键): 瞬移技能，5秒冷却
 
-                            // 操作方式
-                            - 左键: 移动角色
-                            - 右键: 释放选中的技能
-                            - 回车: 打开聊天
-                            ```
+// 操作方式
+- 左键: 移动角色
+- 右键: 释放选中的技能
+- 回车: 打开聊天
+```
 
 ## 安装与运行
 
 ### 环境要求
-                            ```bash
-                            Python 3.8+
-    Redis 6.0+
+```bash
+Python 3.8+
+Redis 6.0+
 Node.js (用于JavaScript压缩)
-    ```
+```
 
-### 快速开始
-    ```bash
-# 1. 克隆项目
-    git clone <repository-url>
-    cd tc_acapp-master
+## 快速开始
+```
+### 1. 克隆项目
+git clone <repository-url>
+cd tc_acapp-master
+```
 
-# 2. 安装Python依赖
-    pip install django==4.2.24
-    pip install channels channels-redis
-    pip install django-redis thrift
+### 2. 安装Python依赖
+```
+pip install django==4.2.24
+pip install channels channels-redis
+pip install django-redis thrift
+```
 
-# 3. 启动Redis
-    redis-server
-# 4. 数据库迁移
-    python manage.py migrate
+### 3. 启动Redis
+```
+redis-server
+```
+### 4. 数据库迁移
+```
+python manage.py migrate
+```
 
-# 5. 编译前端资源
-    bash scripts/compress_game_js.sh
+### 5. 编译前端资源
+```
+bash scripts/compress_game_js.sh
+```
 
-# 6. 启动匹配系统
-    cd match_system/src
-    python main.py &
+### 6. 启动匹配系统
+```
+cd match_system/src
+python main.py &
+```
 
-# 7. 启动Django服务器
-    python manage.py runserver
-    ```
+### 7. 启动Django服务器
+```
+python manage.py runserver
+```
 
-### 生产环境部署
-    ```bash
-# 使用uWSGI部署
-    uwsgi --ini scripts/uwsgi.ini
+## 生产环境部署
 
-# 收集静态文件
-    python manage.py collectstatic
-    ```
+### 使用uWSGI部署
+```
+uwsgi --ini scripts/uwsgi.ini
+```
+
+### 收集静态文件
+```
+python manage.py collectstatic
+```
 
 ## 项目亮点
 
 ### 🔥 技术实现
-    1. **实时多人同步**: 使用WebSocket实现毫秒级的游戏状态同步
-    2. **智能匹配算法**: 基于玩家积分和等待时间的平衡匹配机制
-    3. **微服务架构**: 匹配系统独立部署，使用Thrift RPC通信
-    4. **前端游戏引擎**: 纯JavaScript实现的轻量级游戏引擎
+1. **实时多人同步**: 使用WebSocket实现毫秒级的游戏状态同步
+2. **智能匹配算法**: 基于玩家积分和等待时间的平衡匹配机制
+3. **微服务架构**: 匹配系统独立部署，使用Thrift RPC通信
+4. **前端游戏引擎**: 纯JavaScript实现的轻量级游戏引擎
 
 ### 🎨 用户体验
-    1. **响应式设计**: 支持不同分辨率的设备适配
-    2. **流畅动画**: Canvas绘制的高帧率游戏画面
-    3. **实时反馈**: 伤害特效、粒子系统、技能冷却显示
-    4. **社交功能**: 游戏内实时聊天系统
+1. **响应式设计**: 支持不同分辨率的设备适配
+2. **流畅动画**: Canvas绘制的高帧率游戏画面
+3. **实时反馈**: 伤害特效、粒子系统、技能冷却显示
+4. **社交功能**: 游戏内实时聊天系统
 
 ### 📊 性能优化
-    1. **Redis缓存**: 游戏房间状态和玩家数据缓存
-    2. **资源压缩**: JavaScript文件自动压缩合并
-    3. **连接池**: 数据库连接复用和优化
-    4. **静态资源**: CDN加速的图片和字体资源
+1. **Redis缓存**: 游戏房间状态和玩家数据缓存
+2. **资源压缩**: JavaScript文件自动压缩合并
+3. **连接池**: 数据库连接复用和优化
+4. **静态资源**: CDN加速的图片和字体资源
 
 ## 核心算法
 
 ### 匹配算法
-    ```python
-    def check_match(self, a, b):
-        dt = abs(a.score - b.score)
-        a_max_dif = a.waiting_time * 50
-        b_max_dif = b.waiting_time * 50
-        return dt <= a_max_dif and dt <= b_max_dif
-        ```
+```
+def check_match(self, a, b):
+    dt = abs(a.score - b.score)
+    a_max_dif = a.waiting_time * 50
+    b_max_dif = b.waiting_time * 50
+    return dt <= a_max_dif and dt <= b_max_dif
+```
 
 ### 积分系统
-        - 获胜: +10分
-        - 失败: -5分
-        - 匹配考虑积分差距和等待时间
+- 获胜: +10分
+- 失败: -5分
+- 匹配考虑积分差距和等待时间
 
 ## 技术选型说明
 
 ### 为什么选择Django?
-        - **快速开发**: 内置用户认证、管理后台
-        - **WebSocket支持**: Django Channels提供异步支持
-        - **生态成熟**: 丰富的第三方库和部署方案
+- **快速开发**: 内置用户认证、管理后台
+- **WebSocket支持**: Django Channels提供异步支持
+- **生态成熟**: 丰富的第三方库和部署方案
 
 ### 为什么选择Canvas?
-        - **性能优秀**: 硬件加速的2D渲染
-        - **控制灵活**: 像素级的绘制控制
-        - **兼容性好**: 现代浏览器全面支持
+- **性能优秀**: 硬件加速的2D渲染
+- **控制灵活**: 像素级的绘制控制
+- **兼容性好**: 现代浏览器全面支持
 
 ### 为什么使用Redis?
-        - **高性能**: 内存数据库，微秒级响应
-        - **数据结构**: 支持复杂的游戏状态存储
-        - **持久化**: 数据安全保障
-
-## 面试要点
+- **高性能**: 内存数据库，微秒级响应
+- **数据结构**: 支持复杂的游戏状态存储
+- **持久化**: 数据安全保障
 
 ### 展示的技术能力
-        1. **全栈开发**: 前后端完整实现
-        2. **实时通信**: WebSocket双向通信
-        3. **分布式系统**: 微服务架构设计
-        4. **性能优化**: 缓存、压缩、异步处理
-        5. **用户体验**: 游戏交互设计
+1. **全栈开发**: 前后端完整实现
+2. **实时通信**: WebSocket双向通信
+3. **分布式系统**: 微服务架构设计
+4. **性能优化**: 缓存、压缩、异步处理
+5. **用户体验**: 游戏交互设计
 
 ### 可扩展的技术方向
-        - **负载均衡**: Nginx反向代理
-        - **容器化**: Docker部署方案
-        - **监控告警**: 游戏数据统计
-        - **AI机器人**: 更智能的游戏AI
+- **负载均衡**: Nginx反向代理
+- **容器化**: Docker部署方案
+- **监控告警**: 游戏数据统计
+- **AI机器人**: 更智能的游戏AI
 
 ## 在线体验
 
-        部署地址: `app7581.acapp.acwing.com.cn`
+部署地址: `app7581.acapp.acwing.com.cn`
 
-        ---
+---
 
-        **开发者**: [J.Grigg]  
-        **开发时间**: [2025/9]  
-        **联系方式**: [2064747320@qq.com]
+**开发者**: [J.Grigg]  
+**开发时间**: [2025/9]  
+**联系方式**: [2064747320@qq.com]
