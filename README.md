@@ -74,38 +74,53 @@ Node.js (用于JavaScript压缩)
 ```
 
 ### 快速开始
-```bash
+```
 # 1. 克隆项目
 git clone <repository-url>
 cd tc_acapp-master
+```
 
 # 2. 安装Python依赖
+```
 pip install django==4.2.24
 pip install channels channels-redis
 pip install django-redis thrift
+```
 
 # 3. 启动Redis
+```
 redis-server
+```
 # 4. 数据库迁移
+```
 python manage.py migrate
+```
 
 # 5. 编译前端资源
+```
 bash scripts/compress_game_js.sh
+```
 
 # 6. 启动匹配系统
+```
 cd match_system/src
 python main.py &
+```
 
 # 7. 启动Django服务器
+```
 python manage.py runserver
 ```
 
 ### 生产环境部署
-```bash
+
 # 使用uWSGI部署
+```
 uwsgi --ini scripts/uwsgi.ini
+```
 
 # 收集静态文件
+```
 python manage.py collectstatic
 ```
 
@@ -132,7 +147,7 @@ python manage.py collectstatic
 ## 核心算法
 
 ### 匹配算法
-```python
+```
 def check_match(self, a, b):
     dt = abs(a.score - b.score)
     a_max_dif = a.waiting_time * 50
@@ -161,8 +176,6 @@ def check_match(self, a, b):
 - **高性能**: 内存数据库，微秒级响应
 - **数据结构**: 支持复杂的游戏状态存储
 - **持久化**: 数据安全保障
-
-## 面试要点
 
 ### 展示的技术能力
 1. **全栈开发**: 前后端完整实现
