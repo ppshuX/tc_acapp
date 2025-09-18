@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拳皇</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="icon" href="https://cdn.acwing.com/media/article/image/2021/12/17/1_be4c11ce5f-acapp.png">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div id="kof"></div>
+
+    <script type="module">
+        import { KOF } from "{% static 'js/base.js' %}";
+
+        let kof = new KOF('kof');
+    </script>
+</body>
+
+</html>
