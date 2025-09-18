@@ -42,6 +42,13 @@ class Settings {
                 AcWing 一键登录
             </div>
         </div>
+        <div class="ac-game-settings-qq">
+            <img width="30" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
+            <br><br>
+            <div>
+                QQ 一键登录
+            </div>
+        </div>
     </div>
 
     <div class="ac-game-settings-register">
@@ -82,7 +89,13 @@ class Settings {
                 AcWing 一键登录
             </div>
         </div>
-    </div>
+        <div class="ac-game-settings-qq">
+            <img width="30" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
+            <br><br>
+            <div>
+                QQ 一键登录
+            </div>
+        </div>
     </div>
 </div>
 `);
@@ -106,6 +119,7 @@ class Settings {
         this.$register.hide();
 
         this.$acwing_login = this.$settings.find('.ac-game-settings-acwing img');
+        this.$qq_login = this.$settings.find('.ac-game-settings-qq img')
 
         this.root.$ac_game.append(this.$settings);
 
@@ -136,7 +150,6 @@ class Settings {
                 },
                 success: resp => {
                     this.root.access = resp.access;
-                    console.log(resp);
                 }
             })
         }, 4.5 * 60 * 1000);
@@ -149,7 +162,6 @@ class Settings {
                     'Authorization': "Bearer " + this.root.access,
                 },
                 success: resp => {
-                    console.log(resp);
                 }
             });
         }, 5000);
@@ -164,7 +176,10 @@ class Settings {
 
         this.$acwing_login.click(function(){
             outer.acwing_login();
-        })
+        });
+        this.$qq_login.click(function () {
+            outer.qq_login();
+        });
     }
 
     add_listening_events_login() {
@@ -201,6 +216,18 @@ class Settings {
             }
         })
     }
+    qq_login() {
+        var url = window.location.href;
+        $.ajax({
+            url: url + "settings/qq/apply_code/",
+            type: "GET",
+            success: function (resp) {
+                if (resp.result === "success") {
+                    window.location.replace(resp.apply_code_url);
+                }
+            }
+        });
+    }
 
     login_on_remote(username, password) {
         username = username || this.$login_username.val();
@@ -215,7 +242,6 @@ class Settings {
                 password: password,
             },
             success: resp => {
-                console.log(resp);
                 this.root.access = resp.access;
                 this.root.refresh = resp.refresh;
                 this.refresh_jwt_token();
@@ -278,7 +304,6 @@ class Settings {
                 this.photo = resp.photo;
                 this.hide();
                 this.root.menu.show();
-                console.log(resp);
                 this.root.access = resp.access;
                 this.root.refresh = resp.refresh;
                 this.refresh_jwt_token();
@@ -312,7 +337,6 @@ class Settings {
             },
             success: resp => {
                 if (resp.result === "success") {
-                    console.log(resp);
                     this.username = resp.username;
                     this.photo = resp.photo;
                     this.hide();

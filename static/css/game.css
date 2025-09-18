@@ -146,6 +146,8 @@
 .ac-game-settings-acwing {
     display: block;
     height: 7vh;
+    float: left;
+    padding-left: 1vw;
 }
 
 .ac-game-settings-acwing > img {
@@ -162,7 +164,7 @@
     text-align: center;
 }
 
-.ac-game-chat-field-history{
+.ac-game-chat-field-history {
     position: absolute;
     top: 66%;
     left: 20%;
@@ -198,3 +200,26 @@
 
     background-color: rgba(225, 225, 230, 0.2);
 }
+
+.ac-game-settings-qq > img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.ac-game-settings-qq > div {
+    color: white;
+    font-size: 1.5vh;
+    text-align: center;
+    display: block;
+}
+
+.ac-game-settings-qq {
+    display: block;
+    height: 7vh;
+    float: right;
+    padding-right: 1vw;
+}
+

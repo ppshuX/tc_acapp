@@ -14,4 +14,5 @@ urlpatterns = [
     path("register/", PlayerView.as_view(), name="settings_register"),
     path("ranklist/", RanklistView.as_view(), name="settings_ranklist"),
     path("acwing/", include("game.urls.settings.acwing.index")),
+    path("qq/", include("game.urls.settings.qq.index")),
 ]
