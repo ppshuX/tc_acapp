@@ -43,7 +43,7 @@ class Settings {
             </div>
         </div>
         <div class="ac-game-settings-qq">
-            <img width="25" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
+            <img width="25" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_login.png">
             <br><br>
             <div style="font-size: 12px;">
                 QQ 一键登录
@@ -90,7 +90,7 @@ class Settings {
             </div>
         </div>
         <div class="ac-game-settings-qq">
-            <img width="25" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
+            <img width="25" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_login.png">
             <br><br>
             <div style="font-size: 12px;">
                 QQ 一键登录

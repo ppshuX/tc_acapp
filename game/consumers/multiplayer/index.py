@@ -54,13 +54,6 @@ class MultiPlayer(AsyncWebsocketConsumer):
         transport.close()
 
 
-    async def group_send_event(self, data):
-        if not self.room_name:
-            keys = cache.keys('*%s*' % (self.uuid))
-            if keys:
-                self.room_name = keys[0]
-        await self.send(text_data=json.dumps(data))
-
     async def move_to(self, data):
         await self.channel_layer.group_send(
             self.room_name,
@@ -155,6 +148,13 @@ class MultiPlayer(AsyncWebsocketConsumer):
                 'text': data['text'],
             }
         )
+
+    async def group_send_event(self, data):
+        if not self.room_name:
+            keys = cache.keys('*%s*' % (self.uuid))
+            if keys:
+                self.room_name = keys[0]
+        await self.send(text_data=json.dumps(data))
 
     async def receive(self, text_data):
         data = json.loads(text_data)
