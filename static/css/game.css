@@ -148,6 +148,7 @@
     height: 7vh;
     float: left;
     padding-left: 1vw;
+    margin-left: 2.2vw;   /* 调整这里的数值控制右移距离 */
 }
 
 .ac-game-settings-acwing > img {

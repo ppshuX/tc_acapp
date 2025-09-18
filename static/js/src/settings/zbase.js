@@ -38,14 +38,14 @@ class Settings {
         <div class="ac-game-settings-acwing">
             <img width="30" src="https://app7581.acapp.acwing.com.cn/static/image/settings/acwing_logo.png">
             <br><br>
-            <div>
+            <div style="font-size: 12px;">
                 AcWing 一键登录
             </div>
         </div>
         <div class="ac-game-settings-qq">
-            <img width="30" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
+            <img width="25" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
             <br><br>
-            <div>
+            <div style="font-size: 12px;">
                 QQ 一键登录
             </div>
         </div>
@@ -85,14 +85,14 @@ class Settings {
         <div class="ac-game-settings-acwing">
             <img width="30" src="https://app7581.acapp.acwing.com.cn/static/image/settings/acwing_logo.png">
             <br><br>
-            <div>
+            <div style="font-size: 12px;">
                 AcWing 一键登录
             </div>
         </div>
         <div class="ac-game-settings-qq">
-            <img width="30" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
+            <img width="25" src="https://app7581.acapp.acwing.com.cn/static/image/settings/qq_logo.png">
             <br><br>
-            <div>
+            <div style="font-size: 12px;">
                 QQ 一键登录
             </div>
         </div>
