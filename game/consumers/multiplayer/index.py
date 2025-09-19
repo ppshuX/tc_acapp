@@ -138,6 +138,8 @@ class MultiPlayer(AsyncWebsocketConsumer):
         )
 
     async def message(self, data):
+        if not self.room_name:
+            return
         await self.channel_layer.group_send(
             self.room_name,
             {
@@ -149,12 +151,14 @@ class MultiPlayer(AsyncWebsocketConsumer):
             }
         )
 
+
     async def group_send_event(self, data):
         if not self.room_name:
             keys = cache.keys('*%s*' % (self.uuid))
             if keys:
                 self.room_name = keys[0]
         await self.send(text_data=json.dumps(data))
+
 
     async def receive(self, text_data):
         data = json.loads(text_data)
