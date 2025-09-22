@@ -5,10 +5,14 @@ from django.core.cache import cache
 
 
 def get_state():
-    res = ""
+    import time
+    import random
+    # 使用时间戳 + 随机数，确保每次都是唯一的
+    timestamp = str(int(time.time() * 1000))  # 毫秒时间戳
+    random_part = ""
     for i in range(8):
-        res += str(randint(0, 9))
-    return res
+        random_part += str(randint(0, 9))
+    return timestamp + random_part
 
 
 def apply_code(request):
@@ -26,3 +30,4 @@ def apply_code(request):
         'result': 'success',
         'apply_code_url': apply_code_url + "?response_type=%s&client_id=%s&redirect_uri=%s&scope=%s&state=%s" % (response_type, client_id, redirect_uri, scope, state)
     })
+
