@@ -23,8 +23,8 @@ def receive_code(request):
     apply_access_token_url = "https://graph.qq.com/oauth2.0/token"
     params = {
         'grant_type': 'authorization_code',
-        'client_id': "102812030",                            # 填入APP ID
-        'client_secret': "wlW3LN6ZnpfCXhgT",                 # 填入APP Key
+        'client_id': "102808975",                            # 填入APP ID
+        'client_secret': "PgiU0OYXIn49za1E",                 # 填入APP Key
         'code': code,
         'redirect_uri': redirect_uri,
         'fmt': "json"
@@ -50,7 +50,7 @@ def receive_code(request):
     get_user_info_url = "https://graph.qq.com/user/get_user_info"
     params = {
         'access_token': access_token,
-        'oauth_consumer_key': "102812030",      # 填入APP ID
+        'oauth_consumer_key': "102808975",      # 填入APP ID
         'openid': openid
     }
     userinfo_res = requests.get(get_user_info_url, params=params).json()
