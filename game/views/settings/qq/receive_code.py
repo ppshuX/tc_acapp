@@ -24,8 +24,8 @@ def receive_code(request):
         apply_access_token_url = "https://graph.qq.com/oauth2.0/token"
         params = {
             'grant_type': 'authorization_code',
-            'client_id': "102812476",                            # 填入APP ID
-            'client_secret': "10nLehS1MRN7FAut",                 # 填入APP Key
+            'client_id': "102809005",                            # 填入APP ID
+            'client_secret': "Wu2waz81e6KL8hrp",                 # 填入APP Key
             'code': code,
             'redirect_uri': redirect_uri,
             'fmt': "json"

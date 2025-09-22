@@ -12,7 +12,7 @@ def get_state():
 
 
 def apply_code(request):
-    client_id = "102812476"  # 填写 APP ID
+    client_id = "102809005"  # 填写 APP ID
     redirect_uri = quote("https://app7581.acapp.acwing.com.cn/settings/qq/receive_code")  # 处理网址中的特殊字符
     scope = "get_user_info"
     state = get_state()
