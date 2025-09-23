@@ -5,6 +5,10 @@
 TC-ACApp是一个基于Django + WebSocket的多人实时对战游戏，专为腾讯面试准备开发。该项目展示了全栈开发能力，包含完整的用户系统、实时通信、游戏匹配、技能战斗等核心功能。
 ### ->  [tc_acapp 游戏链接](https://app7581.acapp.acwing.com.cn/) <-
 
+---
+<img width="850" height="500" alt="image" src="https://github.com/user-attachments/assets/fabcd070-2d1e-45a7-a8c7-cb787bbd6c42" />
+
+
 ## 技术特色
 
 ### 🎯 核心技术栈
